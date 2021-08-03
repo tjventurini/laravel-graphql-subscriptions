@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\MyEvent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pusher-sample');
+});
+
+Route::get('my-event', function () {
+    event(new MyEvent('Hello World!'));
+
+    return 'Event Sent!';
 });
