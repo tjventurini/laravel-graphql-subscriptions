@@ -2,7 +2,7 @@
 # variables
 #
 # the list of containers to work with
-CONTAINERS=nginx php-fpm mysql workspace
+CONTAINERS=nginx php-fpm mysql redis workspace
 # the branch to pull updates form
 UPDATE_MAIN_BRANCH=8.x
 # time that we give the containers to boot before we proceed with the setup 
