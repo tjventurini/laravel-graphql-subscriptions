@@ -165,14 +165,14 @@ return [
         /*
          * Package Service Providers...
          */
-        // \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
+        \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        App\Providers\BroadcastServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 

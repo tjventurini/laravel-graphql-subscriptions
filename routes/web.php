@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\MyEvent;
+use App\Models\Message;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,18 @@ Route::get('/', function () {
     return view('pusher-sample');
 });
 
+
+Route::get('/vue-apollo', function () {
+    return view('vue-apollo-sample');
+});
+
+
 Route::get('my-event', function () {
     event(new MyEvent('Hello World!'));
+    
+    $Message = Message::create(['message' => 'Hi from web ...']);
+
+    \Nuwave\Lighthouse\Execution\Utils\Subscription::broadcast('messageCreated', 'hi');
 
     return 'Event Sent!';
 });
