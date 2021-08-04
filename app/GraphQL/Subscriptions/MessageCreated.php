@@ -38,7 +38,7 @@ class MessageCreated extends GraphQLSubscription
         // TODO implement filter
 
         Log::debug('filter');
-        return true;
+        return false;
     }
 
     /**

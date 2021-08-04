@@ -11,7 +11,7 @@
             http-equiv="X-UA-Compatible"
             content="ie=edge"
         >
-        <title>Document</title>
+        <title>Vue Apollo Sample</title>
         <link
             href="{{ asset('css/app.css') }}"
             rel="stylesheet"
@@ -19,7 +19,6 @@
     </head>
 
     <body>
-        <h1>Vue Apollo Sample</h1>
 
         <div id="app">
             <App />

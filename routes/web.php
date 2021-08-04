@@ -30,7 +30,7 @@ Route::get('my-event', function () {
     
     $Message = Message::create(['message' => 'Hi from web ...']);
 
-    \Nuwave\Lighthouse\Execution\Utils\Subscription::broadcast('messageCreated', 'hi');
+    \Nuwave\Lighthouse\Execution\Utils\Subscription::broadcast('messageCreated', $Message);
 
     return 'Event Sent!';
 });

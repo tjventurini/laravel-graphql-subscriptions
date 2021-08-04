@@ -1,21 +1,44 @@
+import Vue from 'vue';
+
+import VueApollo from 'vue-apollo';
 import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
+import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import Vue from 'vue';
-import VueApollo from 'vue-apollo';
+// subscription imports
+import { split } from 'apollo-link'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getMainDefinition } from 'apollo-utilities'
 
-import { App } from './pages/App.vue';
+import App from './pages/App';
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
     uri: 'http://localhost/graphql',
 });
+
+const wsLink = new WebSocketLink({
+    uri: 'wss://ws-eu.pusher.com/app/a72fd1cd45a5f520c1f0?protocol=7',
+    options: {
+        reconnect: true,
+    },
+});
+
+const link = split(
+    ({ query }) => {
+        const definition = getMainDefinition(query);
+        return definition.kind === 'OperationDefinition'
+            && definition.operation === 'subscription';
+    },
+    wsLink,
+    httpLink,
+);
 
 const cache = new InMemoryCache();
 
 const apolloClient = new ApolloClient({
-    link: httpLink,
+    link,
     cache,
+    connectToDevTools: true,
 });
 
 Vue.use(VueApollo);
