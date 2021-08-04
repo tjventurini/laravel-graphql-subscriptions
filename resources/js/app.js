@@ -7,8 +7,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 // subscription imports
 import { ApolloLink, split } from 'apollo-link'
-import { WebSocketLink } from 'apollo-link-ws'
-import { getMainDefinition } from 'apollo-utilities'
+// import { WebSocketLink } from 'apollo-link-ws'
+// import { getMainDefinition } from 'apollo-utilities'
 
 // pusher
 import Pusher from "pusher-js";
