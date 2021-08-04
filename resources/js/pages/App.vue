@@ -30,20 +30,28 @@ export default {
                     }
                 }
             `,
+            subscribeToMore: {
+                document: gql`
+                    subscription messageCreated {
+                        messageCreated {
+                            id
+                            message
+                        }
+                    }
+                `,
+                updateQuery: (previousResult, { subscriptionData }) => {
+                    console.log(previousResult);
+                    console.log(subscriptionData);
+
+                    return {
+                        messages: [
+                            ...previousResult.messages,
+                            subscriptionData.data.messageCreated,
+                        ],
+                    };
+                },
+            },
         },
-        // $subscribe: {
-        //     messageCreated: gql`
-        //         subscription messageCreated {
-        //             messageCreated {
-        //                 id
-        //                 message
-        //             }
-        //         }
-        //     `,
-        //     result({ data }) {
-        //         console.log(data.messageCreated);
-        //     },
-        // },
     },
 };
 </script>

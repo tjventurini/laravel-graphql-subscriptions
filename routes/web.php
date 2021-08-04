@@ -28,7 +28,7 @@ Route::get('/vue-apollo', function () {
 Route::get('my-event', function () {
     event(new MyEvent('Hello World!'));
     
-    $Message = Message::create(['message' => 'Hi from web ...']);
+    $Message = Message::create(['message' => 'Fuck Yeah! 🤘']);
 
     \Nuwave\Lighthouse\Execution\Utils\Subscription::broadcast('messageCreated', $Message);
 

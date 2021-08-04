@@ -22,7 +22,7 @@ class MessageCreated extends GraphQLSubscription
     {
         // TODO implement authorize
         
-        Log::debug('authorize');
+        Log::debug('authorize', []);
         return true;
     }
 
@@ -37,8 +37,9 @@ class MessageCreated extends GraphQLSubscription
     {
         // TODO implement filter
 
-        Log::debug('filter');
-        return false;
+        Log::debug('filter', [$root]);
+        // return false;
+        return true;
     }
 
     /**
@@ -49,8 +50,8 @@ class MessageCreated extends GraphQLSubscription
      */
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        Log::debug('resolve', $root);
-
+        Log::debug('resolve', [$root]);
+        
         return $root;
     }
 }
